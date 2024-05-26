@@ -11,6 +11,9 @@ sources:
             tests:
               - unique
               - not_null
+          - name: o_custkey
+            tests:
+              - not_null
       - name: lineitem
         columns:
           - name: l_orderkey
@@ -18,3 +21,12 @@ sources:
               - relationships:
                   to: source('tpch', 'orders')
                   field: o_orderkey
+      - name: customer
+        columns:
+          - name: c_custkey
+            tests:
+              - unique
+              - not_null
+              - relationships:
+                  to: source('tpch', 'orders')
+                  field: o_custkey
